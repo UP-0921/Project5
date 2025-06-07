@@ -28,6 +28,11 @@ int main(void) {
 	int beforeCat;
 	int mood = 3; 
 	int cp = 0;   
+	int hasScratcher = 0;
+	int hasTower = 0;
+	int scratcherPos = -1;
+	int towerPos = -1;
+
 	system("cls");
 	while (1) {
 		printf("==================== 현재상태===================\n현재까지만든수프: %d개\nCP : %d 포인트\n   %s의 기분(0~3): %d\n", soup,cp ,str, mood);
@@ -77,24 +82,62 @@ int main(void) {
 			break;
 
 		}
-		printf("%s 이동: 집사와 친밀할수록 냄비 쪽으로 갈 확률이 높아집니다.\n주사위 눈이 %d 이상이면 냄비 쪽으로 이동합니다.\n주사위를 굴립니다. 또르륵...\n", str, (6 - relationship));
+		printf("\n6-2: 주사위 눈이 4이하이면 그냥 기분이 나빠집니다.\n");
+		printf("주사위를 굴립니다. 또르륵...\n");
 		r = rand() % 6 + 1;
 		printf("%d이(가) 나왔습니다.\n", r);
-		if (r >= (6 - relationship)) {
-			printf("냄비 쪽으로 움직입니다.\n");
-
-			beforeCat = cat;
-			cat++;
-			if (cat > BWL_POS) {
-				cat = BWL_POS;
-			}
+		if (r <= (6 - relationship)) {
+			printf("%s의 기분이 나빠집니다: %d -> ", str, mood);
+			mood--;
+			if (mood < 0) mood = 0;
+			printf("%d\n", mood);
 		}
 		else {
-			printf("집 쪽으로 움직입니다.\n");
+			printf("다행히 기분이 나빠지지 않았습니다.\n");
+		}
+		Sleep(1500);
+		beforeCat = cat;
+		if (mood == 0) {
+			printf("기분이 매우 나쁜 %s은(는) 집으로 향합니다.\n", str);
+			if (cat > HME_POS) cat--;
+			else printf("%s은(는) 집에 도착해 가만히 있습니다.\n", str);
+		}
+		else if (mood == 1) {
+			
+			if (!hasScratcher && !hasTower) {
+				printf("놀 거리가 없어서 기분이 매우 나빠집니다.\n");
+				mood--;
+				if (mood < 0) mood = 0;
+			}
+			else {
+				
+				int target = -1;
+				if (hasScratcher && hasTower) {
+					int distS = abs(cat - scratcherPos);
+					int distT = abs(cat - towerPos);
+					target = (distS <= distT) ? scratcherPos : towerPos;
+				}
+				else if (hasScratcher) {
+					target = scratcherPos;
+				}
+				else {
+					target = towerPos;
+				}
 
-			beforeCat = cat;
-			cat--;
-			if (cat < HME_POS) cat = HME_POS;
+				if (cat < target) cat++;
+				else if (cat > target) cat--;
+
+				printf("%s은(는) 심심해서 놀이기구 쪽으로 이동합니다.\n", str);
+			}
+		}
+		else if (mood == 2) {
+			printf("%s은(는) 기분좋게 식빵을 굽고 있습니다.\n", str);
+			
+		}
+		else if (mood == 3) {
+			printf("%s은(는) 골골송을 부르며 수프를 만들러 갑니다.\n", str);
+			if (cat < BWL_POS) cat++;
+			else printf("%s은(는) 이미 냄비 앞에 있습니다.\n", str);
 		}
 		if (cat == HME_POS) printf("%s은(는) 자신의 집에서 편안함을 느낍니다.\n", str);
 		if (cat == BWL_POS) {
