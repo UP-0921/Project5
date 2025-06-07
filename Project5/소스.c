@@ -32,7 +32,8 @@ int main(void) {
 	int hasTower = 0;
 	int scratcherPos = -1;
 	int towerPos = -1;
-
+	int hasToyMouse = 0;
+	int hasLaser = 0;
 	system("cls");
 	while (1) {
 		printf("==================== 현재상태===================\n현재까지만든수프: %d개\nCP : %d 포인트\n   %s의 기분(0~3): %d\n", soup,cp ,str, mood);
@@ -139,11 +140,16 @@ int main(void) {
 			if (cat < BWL_POS) cat++;
 			else printf("%s은(는) 이미 냄비 앞에 있습니다.\n", str);
 		}
-		if (cat == HME_POS) printf("%s은(는) 자신의 집에서 편안함을 느낍니다.\n", str);
-		if (cat == BWL_POS) {
-			r = rand() % 2;
-			switch (r)
-			{
+		if (cat == HME_POS && beforeCat == HME_POS) {
+			printf("%s은(는) 집에서 편안히 쉽니다.\n", str);
+			if (mood < 3) {
+				mood++;
+				printf("기분이 조금 좋아졌습니다: %d -> %d\n", mood - 1, mood);
+			}
+		}
+		else if (cat == BWL_POS) {
+			r = rand() % 3;
+			switch (r) {
 			case 0:
 				printf("%s은(는) 감자 수프를 만들었습니다!\n", str);
 				break;
@@ -156,7 +162,18 @@ int main(void) {
 			}
 			soup++;
 		}
-		
+		else if (cat == scratcherPos) {
+			if (mood < 3) {
+				mood++;
+				printf("%s은(는) 스크래처를 긁고 놀았습니다.\n기분이 조금 좋아졌습니다: %d -> %d\n", str, mood - 1, mood);
+			}
+		}
+		else if (cat == towerPos) {
+			int before = mood;
+			mood += 2;
+			if (mood > 3) mood = 3;
+			printf("%s은(는) 캣타워를 뛰어다닙니다.\n기분이 제법 좋아졌습니다: %d -> %d\n", before, mood);
+		}
 		for (int i = 0; i < ROOM_WIDTH; i++) printf("#");
 		printf("\n");
 
@@ -179,42 +196,87 @@ int main(void) {
 		for (int i = 0; i < ROOM_WIDTH; i++) printf("#");
 		printf("\n\n");
 
-		printf("어떤 상호작용을 하시겠습니까?    0. 아무것도 하지 않음  1. 긁어주기\n>>");
-		scanf_s("%d", &interaction);
+		int option = 1;
+		printf("어떤 상호작용을 하시겠습니까?\n");
+		printf("0. 아무것도 하지 않음\n");
+		printf("1. 긁어주기\n");
+		if (hasToyMouse) {
+			printf("%d. 장난감 쥐로 놀아 주기\n", option + 1);
+		}
+		if (hasLaser) {
+			printf("%d. 레이저 포인터로 놀아 주기\n", option + (hasToyMouse ? 2 : 1));
+		}
+		printf(">> ");
+		int interaction;
+		scanf("%d", &interaction);
+
+		// 입력 예외 처리
+		int maxOption = 1 + hasToyMouse + hasLaser;
+		while (interaction < 0 || interaction > maxOption) {
+			printf("잘못된 입력입니다. 다시 입력해주세요:\n>> ");
+			scanf("%d", &interaction);
+		}
+
+		// 상호작용 처리
 		if (interaction == 0) {
-			printf("아무것도 하지 않았습니다.\n4/6의 확률로 친밀도가 떨어집니다.\n주사위를 굴립니다. 또르륵...\n");
+			printf("아무것도 하지 않았습니다.\n");
+			mood--;
+			if (mood < 0) mood = 0;
+			printf("기분이 나빠졌습니다: %d\n", mood);
 			r = rand() % 6 + 1;
-			printf("%d이(가) 나왔습니다.\n", r);
-			if (r <= 4) {
-				printf("친밀도가 떨어집니다.\n");
+			printf("주사위를 굴립니다... %d\n", r);
+			if (r <= 5) {
 				relationship--;
-				printf("현재 친밀도: %d", relationship);
-				if (relationship < 0) {
-					relationship = 0;
-				}
+				if (relationship < 0) relationship = 0;
+				printf("집사와의 관계가 나빠졌습니다: %d\n", relationship);
 			}
 			else {
-				printf("다행히 친밀도가 떨어지지 않았습니다.\n");
-				printf("현재 친밀도: %d", relationship);
+				printf("다행히 관계는 그대로입니다.\n");
 			}
 		}
-		else
-		{
-			printf("%s의 턱을 긁어주었습니다.\n2/6의 확률로 친밀도가 높아집니다.\n주사위를 굴립니다. 또르륵...\n", str);
+		else if (interaction == 1) {
+			printf("%s의 턱을 긁어주었습니다.\n", str);
 			r = rand() % 6 + 1;
-			printf("%d이(가) 나왔습니다.\n", r);
-			if (r <= 5) {
-				printf("친밀도가 높아집니다.\n");
+			printf("주사위를 굴립니다... %d\n", r);
+			if (r >= 5) {
 				relationship++;
-				if (relationship > 4) {
-					relationship = 4;
-				}
-				printf("현재 친밀도: %d", relationship);
-
+				if (relationship > 4) relationship = 4;
+				printf("집사와의 관계가 조금 좋아졌습니다: %d\n", relationship);
 			}
 			else {
-				printf("친밀도는 그대로 입니다.\n");
-				printf("현재 친밀도: %d", relationship);
+				printf("관계는 그대로입니다.\n");
+			}
+		}
+		else if (interaction == 2 && hasToyMouse) {
+			printf("장난감 쥐로 %s와 놀아 주었습니다.\n", str);
+			mood++;
+			if (mood > 3) mood = 3;
+			printf("기분이 조금 좋아졌습니다: %d\n", mood);
+			r = rand() % 6 + 1;
+			printf("주사위를 굴립니다... %d\n", r);
+			if (r >= 4) {
+				relationship++;
+				if (relationship > 4) relationship = 4;
+				printf("집사와의 관계가 좋아졌습니다: %d\n", relationship);
+			}
+			else {
+				printf("관계는 그대로입니다.\n");
+			}
+		}
+		else {
+			printf("레이저 포인터로 %s와 신나게 놀아 주었습니다.\n", str);
+			mood += 2;
+			if (mood > 3) mood = 3;
+			printf("기분이 꽤 좋아졌습니다: %d\n", mood);
+			r = rand() % 6 + 1;
+			printf("주사위를 굴립니다... %d\n", r);
+			if (r >= 2) {
+				relationship++;
+				if (relationship > 4) relationship = 4;
+				printf("집사와의 관계가 좋아졌습니다: %d\n", relationship);
+			}
+			else {
+				printf("관계는 그대로입니다.\n");
 			}
 		}
 		Sleep(2500);
