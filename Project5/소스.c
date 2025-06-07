@@ -26,9 +26,26 @@ int main(void) {
 	int r;
 	int cat = 1;
 	int beforeCat;
+	int mood = 3; 
+	int cp = 0;   
 	system("cls");
 	while (1) {
-		printf("==================== 현재상태===================\n현재까지만든수프: %d개\n집사와의관계(0~4): %d\n", soup, relationship);
+		printf("==================== 현재상태===================\n현재까지만든수프: %d개\nCP : %d 포인트\n   %s의 기분(0~3): %d\n", soup,cp ,str, mood);
+		switch (mood) {
+		case 0:
+			printf("기분이 매우 나쁩니다.\n");
+			break;
+		case 1:
+			printf("심심해합니다.\n");
+			break;
+		case 2:
+			printf("식빵을 굽습니다.\n");
+			break;
+		case 3:
+			printf("골골송을 부릅니다.\n");
+			break;
+		}
+		printf("집사와의 관계(0~4): %d\n", relationship);
 		switch (relationship)
 		{
 		case 0:
@@ -96,20 +113,19 @@ int main(void) {
 			}
 			soup++;
 		}
-		for (int i = 0; i < ROOM_WIDTH; i++)printf("#");
+		
+		for (int i = 0; i < ROOM_WIDTH; i++) printf("#");
 		printf("\n");
 
-		for (int i = 0; i < ROOM_WIDTH; i++)
-		{
+		for (int i = 0; i < ROOM_WIDTH; i++) {
 			if (i == 0 || i == ROOM_WIDTH - 1) printf("#");
-			else if (i == HME_POS)printf("H");
-			else if (i == BWL_POS)printf("B");
+			else if (i == HME_POS) printf("H");
+			else if (i == BWL_POS) printf("B");
 			else printf(" ");
-
 		}
 		printf("\n");
-		for (int i = 0; i < ROOM_WIDTH; i++)
-		{
+
+		for (int i = 0; i < ROOM_WIDTH; i++) {
 			if (i == 0 || i == ROOM_WIDTH - 1) printf("#");
 			else if (i == cat) printf("C");
 			else if (i == beforeCat) printf(".");
