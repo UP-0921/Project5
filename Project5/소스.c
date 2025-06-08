@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 #define ROOM_WIDTH	10
 #define HME_POS	1
 #define BWL_POS (ROOM_WIDTH -2)
@@ -9,7 +9,7 @@
 int main(void) {
 	int soup = 0;
 	int relationship = 2;
-	printf("****¾ß¿ËÀÌ¿Í¼öÇÁ****\n\n");
+	printf("****ì•¼ì˜¹ì´ì™€ìˆ˜í”„****\n\n");
 	printf("  /\\   /\\_/\\ \n");
 	printf(" //\\\\ / o o \\ \n");
 	printf("// \\\\ \\~(*)~/ \n");
@@ -17,101 +17,104 @@ int main(void) {
 	printf("    | \\|| || \n");
 	printf("    \\ '|| || \n");
 	printf("     \\)()-()) \n");
-	printf("¾ß¿ËÀÌ ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä: ");
+	printf("ì•¼ì˜¹ì´ ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”: ");
 	char str[100];
 	scanf("%s", str);
-	printf("¾ß¿ËÀÌ ÀÌ¸§Àº %s ÀÔ´Ï´Ù.", str);
+	printf("ì•¼ì˜¹ì´ ì´ë¦„ì€ %s ì…ë‹ˆë‹¤.", str);
 	Sleep(1000);
 	int interaction;
 	int r;
 	int cat = 1;
 	int beforeCat;
-	int mood = 3; 
-	int cp = 0;   
+	int mood = 3;
+	int cp = 0;
 	int hasScratcher = 0;
 	int hasTower = 0;
 	int scratcherPos = -1;
 	int towerPos = -1;
 	int hasToyMouse = 0;
 	int hasLaser = 0;
+	int buyChoice;
+	int turn = 0;
+	system("cls");
 	system("cls");
 	while (1) {
-		printf("==================== ÇöÀç»óÅÂ===================\nÇöÀç±îÁö¸¸µç¼öÇÁ: %d°³\nCP : %d Æ÷ÀÎÆ®\n   %sÀÇ ±âºĞ(0~3): %d\n", soup,cp ,str, mood);
+		printf("==================== í˜„ì¬ìƒíƒœ===================\ní˜„ì¬ê¹Œì§€ë§Œë“ ìˆ˜í”„: %dê°œ\nCP : %d í¬ì¸íŠ¸\n   %sì˜ ê¸°ë¶„(0~3): %d\n", soup, cp, str, mood);
 		switch (mood) {
 		case 0:
-			printf("±âºĞÀÌ ¸Å¿ì ³ª»Ş´Ï´Ù.\n");
+			printf("ê¸°ë¶„ì´ ë§¤ìš° ë‚˜ì©ë‹ˆë‹¤.\n");
 			break;
 		case 1:
-			printf("½É½ÉÇØÇÕ´Ï´Ù.\n");
+			printf("ì‹¬ì‹¬í•´í•©ë‹ˆë‹¤.\n");
 			break;
 		case 2:
-			printf("½Ä»§À» ±Á½À´Ï´Ù.\n");
+			printf("ì‹ë¹µì„ êµ½ìŠµë‹ˆë‹¤.\n");
 			break;
 		case 3:
-			printf("°ñ°ñ¼ÛÀ» ºÎ¸¨´Ï´Ù.\n");
+			printf("ê³¨ê³¨ì†¡ì„ ë¶€ë¦…ë‹ˆë‹¤.\n");
 			break;
 		}
-		printf("Áı»ç¿ÍÀÇ °ü°è(0~4): %d\n", relationship);
+		printf("ì§‘ì‚¬ì™€ì˜ ê´€ê³„(0~4): %d\n", relationship);
 		switch (relationship)
 		{
 		case 0:
 
-			printf("°ç¿¡ ¿À´Â °ÍÁ¶Â÷ ½È¾îÇÕ´Ï´Ù.\n==================================================\n\n");
+			printf("ê³ì— ì˜¤ëŠ” ê²ƒì¡°ì°¨ ì‹«ì–´í•©ë‹ˆë‹¤.\n==================================================\n\n");
 			break;
 
 		case 1:
 
-			printf("°£½ÄÀÚÆÇ±â Ãë±ŞÀÔ´Ï´Ù.\n==================================================\n\n");
+			printf("ê°„ì‹ìíŒê¸° ì·¨ê¸‰ì…ë‹ˆë‹¤.\n==================================================\n\n");
 			break;
 
 
 		case 2:
 
-			printf("±×·°Àú·° ¾µ ¸¸ÇÑ Áı»çÀÔ´Ï´Ù.\n==================================================\n\n");
+			printf("ê·¸ëŸ­ì €ëŸ­ ì“¸ ë§Œí•œ ì§‘ì‚¬ì…ë‹ˆë‹¤.\n==================================================\n\n");
 			break;
 
 
 		case 3:
 
-			printf("ÈÇ¸¢ÇÑ Áı»ç·Î ÀÎÁ¤ ¹Ş°í ÀÖ½À´Ï´Ù.\n==================================================\n\n");
+			printf("í›Œë¥­í•œ ì§‘ì‚¬ë¡œ ì¸ì • ë°›ê³  ìˆìŠµë‹ˆë‹¤.\n==================================================\n\n");
 			break;
 
 
 		case 4:
 
-			printf("Áı»ç ²­µüÁöÀÔ´Ï´Ù.\n==================================================\n\n");
+			printf("ì§‘ì‚¬ ê»Œë”±ì§€ì…ë‹ˆë‹¤.\n==================================================\n\n");
 			break;
 
 		}
-		printf("\n6-2: ÁÖ»çÀ§ ´«ÀÌ 4ÀÌÇÏÀÌ¸é ±×³É ±âºĞÀÌ ³ªºüÁı´Ï´Ù.\n");
-		printf("ÁÖ»çÀ§¸¦ ±¼¸³´Ï´Ù. ¶Ç¸£¸¤...\n");
+		printf("\n6-2: ì£¼ì‚¬ìœ„ ëˆˆì´ 4ì´í•˜ì´ë©´ ê·¸ëƒ¥ ê¸°ë¶„ì´ ë‚˜ë¹ ì§‘ë‹ˆë‹¤.\n");
+		printf("ì£¼ì‚¬ìœ„ë¥¼ êµ´ë¦½ë‹ˆë‹¤. ë˜ë¥´ë¥µ...\n");
 		r = rand() % 6 + 1;
-		printf("%dÀÌ(°¡) ³ª¿Ô½À´Ï´Ù.\n", r);
+		printf("%dì´(ê°€) ë‚˜ì™”ìŠµë‹ˆë‹¤.\n", r);
 		if (r <= (6 - relationship)) {
-			printf("%sÀÇ ±âºĞÀÌ ³ªºüÁı´Ï´Ù: %d -> ", str, mood);
+			printf("%sì˜ ê¸°ë¶„ì´ ë‚˜ë¹ ì§‘ë‹ˆë‹¤: %d -> ", str, mood);
 			mood--;
 			if (mood < 0) mood = 0;
 			printf("%d\n", mood);
 		}
 		else {
-			printf("´ÙÇàÈ÷ ±âºĞÀÌ ³ªºüÁöÁö ¾Ê¾Ò½À´Ï´Ù.\n");
+			printf("ë‹¤í–‰íˆ ê¸°ë¶„ì´ ë‚˜ë¹ ì§€ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.\n");
 		}
 		Sleep(1500);
 		beforeCat = cat;
 		if (mood == 0) {
-			printf("±âºĞÀÌ ¸Å¿ì ³ª»Û %sÀº(´Â) ÁıÀ¸·Î ÇâÇÕ´Ï´Ù.\n", str);
+			printf("ê¸°ë¶„ì´ ë§¤ìš° ë‚˜ìœ %sì€(ëŠ”) ì§‘ìœ¼ë¡œ í–¥í•©ë‹ˆë‹¤.\n", str);
 			if (cat > HME_POS) cat--;
-			else printf("%sÀº(´Â) Áı¿¡ µµÂøÇØ °¡¸¸È÷ ÀÖ½À´Ï´Ù.\n", str);
+			else printf("%sì€(ëŠ”) ì§‘ì— ë„ì°©í•´ ê°€ë§Œíˆ ìˆìŠµë‹ˆë‹¤.\n", str);
 		}
 		else if (mood == 1) {
-			
+
 			if (!hasScratcher && !hasTower) {
-				printf("³î °Å¸®°¡ ¾ø¾î¼­ ±âºĞÀÌ ¸Å¿ì ³ªºüÁı´Ï´Ù.\n");
+				printf("ë†€ ê±°ë¦¬ê°€ ì—†ì–´ì„œ ê¸°ë¶„ì´ ë§¤ìš° ë‚˜ë¹ ì§‘ë‹ˆë‹¤.\n");
 				mood--;
 				if (mood < 0) mood = 0;
 			}
 			else {
-				
+
 				int target = -1;
 				if (hasScratcher && hasTower) {
 					int distS = abs(cat - scratcherPos);
@@ -128,36 +131,36 @@ int main(void) {
 				if (cat < target) cat++;
 				else if (cat > target) cat--;
 
-				printf("%sÀº(´Â) ½É½ÉÇØ¼­ ³îÀÌ±â±¸ ÂÊÀ¸·Î ÀÌµ¿ÇÕ´Ï´Ù.\n", str);
+				printf("%sì€(ëŠ”) ì‹¬ì‹¬í•´ì„œ ë†€ì´ê¸°êµ¬ ìª½ìœ¼ë¡œ ì´ë™í•©ë‹ˆë‹¤.\n", str);
 			}
 		}
 		else if (mood == 2) {
-			printf("%sÀº(´Â) ±âºĞÁÁ°Ô ½Ä»§À» ±Á°í ÀÖ½À´Ï´Ù.\n", str);
-			
+			printf("%sì€(ëŠ”) ê¸°ë¶„ì¢‹ê²Œ ì‹ë¹µì„ êµ½ê³  ìˆìŠµë‹ˆë‹¤.\n", str);
+
 		}
 		else if (mood == 3) {
-			printf("%sÀº(´Â) °ñ°ñ¼ÛÀ» ºÎ¸£¸ç ¼öÇÁ¸¦ ¸¸µé·¯ °©´Ï´Ù.\n", str);
+			printf("%sì€(ëŠ”) ê³¨ê³¨ì†¡ì„ ë¶€ë¥´ë©° ìˆ˜í”„ë¥¼ ë§Œë“¤ëŸ¬ ê°‘ë‹ˆë‹¤.\n", str);
 			if (cat < BWL_POS) cat++;
-			else printf("%sÀº(´Â) ÀÌ¹Ì ³¿ºñ ¾Õ¿¡ ÀÖ½À´Ï´Ù.\n", str);
+			else printf("%sì€(ëŠ”) ì´ë¯¸ ëƒ„ë¹„ ì•ì— ìˆìŠµë‹ˆë‹¤.\n", str);
 		}
 		if (cat == HME_POS && beforeCat == HME_POS) {
-			printf("%sÀº(´Â) Áı¿¡¼­ Æí¾ÈÈ÷ ½±´Ï´Ù.\n", str);
+			printf("%sì€(ëŠ”) ì§‘ì—ì„œ í¸ì•ˆíˆ ì‰½ë‹ˆë‹¤.\n", str);
 			if (mood < 3) {
 				mood++;
-				printf("±âºĞÀÌ Á¶±İ ÁÁ¾ÆÁ³½À´Ï´Ù: %d -> %d\n", mood - 1, mood);
+				printf("ê¸°ë¶„ì´ ì¡°ê¸ˆ ì¢‹ì•„ì¡ŒìŠµë‹ˆë‹¤: %d -> %d\n", mood - 1, mood);
 			}
 		}
 		else if (cat == BWL_POS) {
 			r = rand() % 3;
 			switch (r) {
 			case 0:
-				printf("%sÀº(´Â) °¨ÀÚ ¼öÇÁ¸¦ ¸¸µé¾ú½À´Ï´Ù!\n", str);
+				printf("%sì€(ëŠ”) ê°ì ìˆ˜í”„ë¥¼ ë§Œë“¤ì—ˆìŠµë‹ˆë‹¤!\n", str);
 				break;
 			case 1:
-				printf("%sÀº(´Â) ¾ç¼ÛÀÌ ¼öÇÁ¸¦ ¸¸µé¾ú½À´Ï´Ù!\n", str);
+				printf("%sì€(ëŠ”) ì–‘ì†¡ì´ ìˆ˜í”„ë¥¼ ë§Œë“¤ì—ˆìŠµë‹ˆë‹¤!\n", str);
 				break;
 			case 2:
-				printf("%sÀº(´Â) ºê·ÎÄİ¸® ¼öÇÁ¸¦ ¸¸µé¾ú½À´Ï´Ù!\n", str);
+				printf("%sì€(ëŠ”) ë¸Œë¡œì½œë¦¬ ìˆ˜í”„ë¥¼ ë§Œë“¤ì—ˆìŠµë‹ˆë‹¤!\n", str);
 				break;
 			}
 			soup++;
@@ -165,22 +168,23 @@ int main(void) {
 		else if (cat == scratcherPos) {
 			if (mood < 3) {
 				mood++;
-				printf("%sÀº(´Â) ½ºÅ©·¡Ã³¸¦ ±Ü°í ³î¾Ò½À´Ï´Ù.\n±âºĞÀÌ Á¶±İ ÁÁ¾ÆÁ³½À´Ï´Ù: %d -> %d\n", str, mood - 1, mood);
+				printf("%sì€(ëŠ”) ìŠ¤í¬ë˜ì²˜ë¥¼ ê¸ê³  ë†€ì•˜ìŠµë‹ˆë‹¤.\nê¸°ë¶„ì´ ì¡°ê¸ˆ ì¢‹ì•„ì¡ŒìŠµë‹ˆë‹¤: %d -> %d\n", str, mood - 1, mood);
 			}
 		}
 		else if (cat == towerPos) {
 			int before = mood;
 			mood += 2;
 			if (mood > 3) mood = 3;
-			printf("%sÀº(´Â) Ä¹Å¸¿ö¸¦ ¶Ù¾î´Ù´Õ´Ï´Ù.\n±âºĞÀÌ Á¦¹ı ÁÁ¾ÆÁ³½À´Ï´Ù: %d -> %d\n", before, mood);
+			printf("%sì€(ëŠ”) ìº£íƒ€ì›Œë¥¼ ë›°ì–´ë‹¤ë‹™ë‹ˆë‹¤.\nê¸°ë¶„ì´ ì œë²• ì¢‹ì•„ì¡ŒìŠµë‹ˆë‹¤: %d -> %d\n", before, mood);
 		}
 		for (int i = 0; i < ROOM_WIDTH; i++) printf("#");
 		printf("\n");
-
 		for (int i = 0; i < ROOM_WIDTH; i++) {
 			if (i == 0 || i == ROOM_WIDTH - 1) printf("#");
 			else if (i == HME_POS) printf("H");
 			else if (i == BWL_POS) printf("B");
+			else if (i == scratcherPos) printf("S");
+			else if (i == towerPos) printf("T");
 			else printf(" ");
 		}
 		printf("\n");
@@ -197,91 +201,212 @@ int main(void) {
 		printf("\n\n");
 
 		int option = 1;
-		printf("¾î¶² »óÈ£ÀÛ¿ëÀ» ÇÏ½Ã°Ú½À´Ï±î?\n");
-		printf("0. ¾Æ¹«°Íµµ ÇÏÁö ¾ÊÀ½\n");
-		printf("1. ±Ü¾îÁÖ±â\n");
+		printf("ì–´ë–¤ ìƒí˜¸ì‘ìš©ì„ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\n");
+		printf("0. ì•„ë¬´ê²ƒë„ í•˜ì§€ ì•ŠìŒ\n");
+		printf("1. ê¸ì–´ì£¼ê¸°\n");
 		if (hasToyMouse) {
-			printf("%d. Àå³­°¨ Áã·Î ³î¾Æ ÁÖ±â\n", option + 1);
+			printf("%d. ì¥ë‚œê° ì¥ë¡œ ë†€ì•„ ì£¼ê¸°\n", option + 1);
 		}
 		if (hasLaser) {
-			printf("%d. ·¹ÀÌÀú Æ÷ÀÎÅÍ·Î ³î¾Æ ÁÖ±â\n", option + (hasToyMouse ? 2 : 1));
+			printf("%d. ë ˆì´ì € í¬ì¸í„°ë¡œ ë†€ì•„ ì£¼ê¸°\n", option + (hasToyMouse ? 2 : 1));
 		}
 		printf(">> ");
 		int interaction;
 		scanf("%d", &interaction);
 
-		// ÀÔ·Â ¿¹¿Ü Ã³¸®
 		int maxOption = 1 + hasToyMouse + hasLaser;
 		while (interaction < 0 || interaction > maxOption) {
-			printf("Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä:\n>> ");
+			printf("ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”:\n>> ");
 			scanf("%d", &interaction);
 		}
 
-		// »óÈ£ÀÛ¿ë Ã³¸®
 		if (interaction == 0) {
-			printf("¾Æ¹«°Íµµ ÇÏÁö ¾Ê¾Ò½À´Ï´Ù.\n");
+			printf("ì•„ë¬´ê²ƒë„ í•˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.\n");
 			mood--;
 			if (mood < 0) mood = 0;
-			printf("±âºĞÀÌ ³ªºüÁ³½À´Ï´Ù: %d\n", mood);
+			printf("ê¸°ë¶„ì´ ë‚˜ë¹ ì¡ŒìŠµë‹ˆë‹¤: %d\n", mood);
 			r = rand() % 6 + 1;
-			printf("ÁÖ»çÀ§¸¦ ±¼¸³´Ï´Ù... %d\n", r);
+			printf("ì£¼ì‚¬ìœ„ë¥¼ êµ´ë¦½ë‹ˆë‹¤... %d\n", r);
 			if (r <= 5) {
 				relationship--;
 				if (relationship < 0) relationship = 0;
-				printf("Áı»ç¿ÍÀÇ °ü°è°¡ ³ªºüÁ³½À´Ï´Ù: %d\n", relationship);
+				printf("ì§‘ì‚¬ì™€ì˜ ê´€ê³„ê°€ ë‚˜ë¹ ì¡ŒìŠµë‹ˆë‹¤: %d\n", relationship);
 			}
 			else {
-				printf("´ÙÇàÈ÷ °ü°è´Â ±×´ë·ÎÀÔ´Ï´Ù.\n");
+				printf("ë‹¤í–‰íˆ ê´€ê³„ëŠ” ê·¸ëŒ€ë¡œì…ë‹ˆë‹¤.\n");
 			}
 		}
 		else if (interaction == 1) {
-			printf("%sÀÇ ÅÎÀ» ±Ü¾îÁÖ¾ú½À´Ï´Ù.\n", str);
+			printf("%sì˜ í„±ì„ ê¸ì–´ì£¼ì—ˆìŠµë‹ˆë‹¤.\n", str);
 			r = rand() % 6 + 1;
-			printf("ÁÖ»çÀ§¸¦ ±¼¸³´Ï´Ù... %d\n", r);
+			printf("ì£¼ì‚¬ìœ„ë¥¼ êµ´ë¦½ë‹ˆë‹¤... %d\n", r);
 			if (r >= 5) {
 				relationship++;
 				if (relationship > 4) relationship = 4;
-				printf("Áı»ç¿ÍÀÇ °ü°è°¡ Á¶±İ ÁÁ¾ÆÁ³½À´Ï´Ù: %d\n", relationship);
+				printf("ì§‘ì‚¬ì™€ì˜ ê´€ê³„ê°€ ì¡°ê¸ˆ ì¢‹ì•„ì¡ŒìŠµë‹ˆë‹¤: %d\n", relationship);
 			}
 			else {
-				printf("°ü°è´Â ±×´ë·ÎÀÔ´Ï´Ù.\n");
+				printf("ê´€ê³„ëŠ” ê·¸ëŒ€ë¡œì…ë‹ˆë‹¤.\n");
 			}
 		}
 		else if (interaction == 2 && hasToyMouse) {
-			printf("Àå³­°¨ Áã·Î %s¿Í ³î¾Æ ÁÖ¾ú½À´Ï´Ù.\n", str);
+			printf("ì¥ë‚œê° ì¥ë¡œ %sì™€ ë†€ì•„ ì£¼ì—ˆìŠµë‹ˆë‹¤.\n", str);
 			mood++;
 			if (mood > 3) mood = 3;
-			printf("±âºĞÀÌ Á¶±İ ÁÁ¾ÆÁ³½À´Ï´Ù: %d\n", mood);
+			printf("ê¸°ë¶„ì´ ì¡°ê¸ˆ ì¢‹ì•„ì¡ŒìŠµë‹ˆë‹¤: %d\n", mood);
 			r = rand() % 6 + 1;
-			printf("ÁÖ»çÀ§¸¦ ±¼¸³´Ï´Ù... %d\n", r);
+			printf("ì£¼ì‚¬ìœ„ë¥¼ êµ´ë¦½ë‹ˆë‹¤... %d\n", r);
 			if (r >= 4) {
 				relationship++;
 				if (relationship > 4) relationship = 4;
-				printf("Áı»ç¿ÍÀÇ °ü°è°¡ ÁÁ¾ÆÁ³½À´Ï´Ù: %d\n", relationship);
+				printf("ì§‘ì‚¬ì™€ì˜ ê´€ê³„ê°€ ì¢‹ì•„ì¡ŒìŠµë‹ˆë‹¤: %d\n", relationship);
 			}
 			else {
-				printf("°ü°è´Â ±×´ë·ÎÀÔ´Ï´Ù.\n");
+				printf("ê´€ê³„ëŠ” ê·¸ëŒ€ë¡œì…ë‹ˆë‹¤.\n");
 			}
 		}
 		else {
-			printf("·¹ÀÌÀú Æ÷ÀÎÅÍ·Î %s¿Í ½Å³ª°Ô ³î¾Æ ÁÖ¾ú½À´Ï´Ù.\n", str);
+			printf("ë ˆì´ì € í¬ì¸í„°ë¡œ %sì™€ ì‹ ë‚˜ê²Œ ë†€ì•„ ì£¼ì—ˆìŠµë‹ˆë‹¤.\n", str);
 			mood += 2;
 			if (mood > 3) mood = 3;
-			printf("±âºĞÀÌ ²Ï ÁÁ¾ÆÁ³½À´Ï´Ù: %d\n", mood);
+			printf("ê¸°ë¶„ì´ ê½¤ ì¢‹ì•„ì¡ŒìŠµë‹ˆë‹¤: %d\n", mood);
 			r = rand() % 6 + 1;
-			printf("ÁÖ»çÀ§¸¦ ±¼¸³´Ï´Ù... %d\n", r);
+			printf("ì£¼ì‚¬ìœ„ë¥¼ êµ´ë¦½ë‹ˆë‹¤... %d\n", r);
 			if (r >= 2) {
 				relationship++;
 				if (relationship > 4) relationship = 4;
-				printf("Áı»ç¿ÍÀÇ °ü°è°¡ ÁÁ¾ÆÁ³½À´Ï´Ù: %d\n", relationship);
+				printf("ì§‘ì‚¬ì™€ì˜ ê´€ê³„ê°€ ì¢‹ì•„ì¡ŒìŠµë‹ˆë‹¤: %d\n", relationship);
 			}
 			else {
-				printf("°ü°è´Â ±×´ë·ÎÀÔ´Ï´Ù.\n");
+				printf("ê´€ê³„ëŠ” ê·¸ëŒ€ë¡œì…ë‹ˆë‹¤.\n");
 			}
 		}
-		Sleep(2500);
-		system("cls");
 
+		int gainedCP = (mood > 1 ? mood - 1 : 0) + relationship;
+		cp += gainedCP;
+		printf("%sì˜ ê¸°ë¶„ê³¼ ì¹œë°€ë„ì— ë”°ë¼ì„œ CPê°€ %d í¬ì¸íŠ¸ ìƒì‚°ë˜ì—ˆìŠµë‹ˆë‹¤.\n", str, gainedCP);
+		printf("ë³´ìœ  CP: %d í¬ì¸íŠ¸\n", cp);
+		printf("\nìƒì ì—ì„œ ë¬¼ê±´ì„ ì‚´ ìˆ˜ ìˆìŠµë‹ˆë‹¤.\nì–´ë–¤ ë¬¼ê±´ì„ êµ¬ë§¤í• ê¹Œìš”?\n");
+		printf("0. ì•„ë¬´ ê²ƒë„ ì‚¬ì§€ ì•ŠëŠ”ë‹¤.\n");
+		printf("1. ì¥ë‚œê° ì¥: 1 CP %s\n", hasToyMouse ? "(í’ˆì ˆ)" : "");
+		printf("2. ë ˆì´ì € í¬ì¸í„°: 2 CP %s\n", hasLaser ? "(í’ˆì ˆ)" : "");
+		printf("3. ìŠ¤í¬ë˜ì²˜: 4 CP %s\n", hasScratcher ? "(í’ˆì ˆ)" : "");
+		printf("4. ìº£ íƒ€ì›Œ: 6 CP %s\n", hasTower ? "(í’ˆì ˆ)" : "");
+		printf(">> ");
+		scanf("%d", &buyChoice);
+
+		if (buyChoice == 0) {
+			break;
+		}
+		else if (buyChoice == 1) {
+			if (hasToyMouse) {
+				printf("ì¥ë‚œê° ì¥ëŠ” ì´ë¯¸ êµ¬ë§¤í–ˆìŠµë‹ˆë‹¤.\n");
+			}
+			else if (cp < 1) {
+				printf("CPê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.\n");
+			}
+			else {
+				hasToyMouse = 1;
+				cp -= 1;
+				printf("ì¥ë‚œê° ì¥ë¥¼ êµ¬ë§¤í–ˆìŠµë‹ˆë‹¤. ë³´ìœ  CP: %d í¬ì¸íŠ¸\n", cp);
+			}
+		}
+		else if (buyChoice == 2) {
+			if (hasLaser) {
+				printf("ë ˆì´ì € í¬ì¸í„°ëŠ” ì´ë¯¸ êµ¬ë§¤í–ˆìŠµë‹ˆë‹¤.\n");
+			}
+			else if (cp < 2) {
+				printf("CPê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.\n");
+			}
+			else {
+				hasLaser = 1;
+				cp -= 2;
+				printf("ë ˆì´ì € í¬ì¸í„°ë¥¼ êµ¬ë§¤í–ˆìŠµë‹ˆë‹¤. ë³´ìœ  CP: %d í¬ì¸íŠ¸\n", cp);
+			}
+		}
+		else if (buyChoice == 3) {
+			if (hasScratcher) {
+				printf("ìŠ¤í¬ë˜ì²˜ëŠ” ì´ë¯¸ êµ¬ë§¤í–ˆìŠµë‹ˆë‹¤.\n");
+			}
+			else if (cp < 4) {
+				printf("CPê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.\n");
+			}
+			else {
+				hasScratcher = 1;
+				cp -= 4;
+
+				do {
+					scratcherPos = rand() % (ROOM_WIDTH - 2) + 1;
+				} while (scratcherPos == HME_POS || scratcherPos == BWL_POS || scratcherPos == towerPos);
+				printf("ìŠ¤í¬ë˜ì²˜ë¥¼ êµ¬ë§¤í–ˆìŠµë‹ˆë‹¤. ìœ„ì¹˜: %d\në³´ìœ  CP: %d í¬ì¸íŠ¸\n", scratcherPos, cp);
+			}
+		}
+		else if (buyChoice == 4) {
+			if (hasTower) {
+				printf("ìº£ íƒ€ì›ŒëŠ” ì´ë¯¸ êµ¬ë§¤í–ˆìŠµë‹ˆë‹¤.\n");
+			}
+			else if (cp < 6) {
+				printf("CPê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.\n");
+			}
+			else {
+				hasTower = 1;
+				cp -= 6;
+				do {
+					towerPos = rand() % (ROOM_WIDTH - 2) + 1;
+				} while (towerPos == HME_POS || towerPos == BWL_POS || towerPos == scratcherPos);
+				printf("ìº£ íƒ€ì›Œë¥¼ êµ¬ë§¤í–ˆìŠµë‹ˆë‹¤. ìœ„ì¹˜: %d\në³´ìœ  CP: %d í¬ì¸íŠ¸\n", towerPos, cp);
+			}
+		}
+		else {
+			printf("ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤.\n");
+		}
+		
+		if (turn % 3 == 0) {
+			int answer;
+			printf("\nğŸ¯ ëŒë°œ í€˜ìŠ¤íŠ¸ ë°œìƒ! ğŸ¯\n");
+			printf("%sì´(ê°€) ë°© ì•ˆì—ì„œ ìˆ˜ìƒí•œ ë²Œë ˆë¥¼ ë°œê²¬í–ˆìŠµë‹ˆë‹¤!\n", str);
+			printf("ì–´ë–»ê²Œ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?\n");
+			printf("1. ì§ì ‘ ì¡ì•„ì¤€ë‹¤ (ì§‘ì‚¬ì˜ ìš©ê¸° ì¦ê°€)\n");
+			printf("2. ê³ ì–‘ì´ì—ê²Œ ë§¡ê¸´ë‹¤ (ê³ ì–‘ì´ì˜ ê¸°ë¶„ì´ ì˜¬ë¼ê°ˆ ìˆ˜ë„...?)\n>> ");
+			scanf("%d", &answer);
+			if (answer == 1) {
+				r = rand() % 6 + 1;
+				printf("ì£¼ì‚¬ìœ„ë¥¼ êµ´ë¦½ë‹ˆë‹¤... %d\n", r);
+				if (r >= 4) {
+					relationship++;
+					if (relationship > 4) relationship = 4;
+					printf("ìš©ê¸° ìˆëŠ” ì§‘ì‚¬! ê´€ê³„ê°€ ì¢‹ì•„ì¡ŒìŠµë‹ˆë‹¤. ê´€ê³„: %d\n", relationship);
+				}
+				else {
+					printf("ë²Œë ˆë¥¼ ëª» ì¡ì•„ì„œ ì˜¤íˆë ¤ ì‹¤ë§í–ˆìŠµë‹ˆë‹¤...\n");
+					relationship--;
+					if (relationship < 0) relationship = 0;
+				}
+			}
+			else if (answer == 2) {
+				r = rand() % 6 + 1;
+				printf("ì£¼ì‚¬ìœ„ë¥¼ êµ´ë¦½ë‹ˆë‹¤... %d\n", r);
+				if (r >= 4) {
+					mood++;
+					if (mood > 3) mood = 3;
+					printf("%sì´(ê°€) ë²Œë ˆë¥¼ ì‚¬ëƒ¥í•˜ê³  ê¸°ë¶„ì´ ì¢‹ì•„ì¡ŒìŠµë‹ˆë‹¤! ê¸°ë¶„: %d\n", str, mood);
+				}
+				else {
+					printf("ë²Œë ˆë¥¼ ë†“ì³ì„œ ê¸°ë¶„ì´ ë‚˜ë¹ ì¡ŒìŠµë‹ˆë‹¤.\n");
+					mood--;
+					if (mood < 0) mood = 0;
+				}
+			}
+			else {
+				printf("ì˜ëª»ëœ ì…ë ¥ì´ë¼ì„œ ì•„ë¬´ê²ƒë„ í•˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤. ê¸°ë¶„ì´ ë‚˜ë¹ ì¡ŒìŠµë‹ˆë‹¤.\n");
+				mood--;
+				if (mood < 0) mood = 0;
+			}
+			Sleep(2500);
+			system("cls");
+
+		}
+	
 	}
 	return 0;
 }
